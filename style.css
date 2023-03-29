@@ -1,14 +1,38 @@
 body{
     margin: 0;
 }
-.container{
+.container > h1{
+    text-align: center;
+}
+.result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    width: 50%;
+    margin: auto;
+}
+.main__Object{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+.bonus__section{
+    justify-content: space-between;
+    align-items: center;
+    height: 220px;
+    width: 400px;
+    margin: auto;
     
+    display: flex;
+
+}
+.bonus_un{
+    margin-left: 5px;
+    width: 100px;
+    height: 100px;
+    border : solid 1px black;
+
 }
 
-.test{
-    color: red;
-}
