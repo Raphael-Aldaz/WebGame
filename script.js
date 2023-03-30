@@ -12,8 +12,7 @@ let valeur =1;
 function increaseScore(){
     score += valeur;
     result.textContent = Math.round(score);
-    element.classList.add("image__clicked")
-    setTimeout(element.classList.add("image__clicked2"), 2000); 
+    
 }
 
 function multiple(){
@@ -29,7 +28,14 @@ function valueVanilla(){
     valeur -= 1;
 }
 
-window.setInterval(increaseScore, 5000);
-/*element.addEventListener("click",increaseScore);*/
+function changePicture(){
+    if(score === 20){
+    element.src="./assets/Capture2.JPG"
+    }
+}
+
+//window.setInterval(increaseScore, 5000);
+element.addEventListener("click",increaseScore);
+//element.addEventListener("click", changePicture)
 /*bonus1.addEventListener("click", multiple);*/
 bonus2.addEventListener("click", multiple2);
