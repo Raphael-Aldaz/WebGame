@@ -1,15 +1,35 @@
 const element = document.querySelector(".image__toClick");
 const result = document.querySelector('.resultValue');
-const bonusSection = document.querySelector(".bonus__section__disabled");
-var score = 0;
-let clickValue = 1;
+const bonus1 = document.querySelector('.bonus_un');
+const bonus2 = document.querySelector('.bonus2')
+let score = 0;
+let valeur =1;
+
+
+
+
 
 function increaseScore(){
-    score += clickValue;
-    result.textContent = score;
-    showBonus();
+    score += valeur;
+    result.textContent = Math.round(score);
+    element.classList.add("image__clicked")
+    setTimeout(element.classList.add("image__clicked2"), 2000); 
 }
 
+function multiple(){
+    score *= 1.2;
+    result.textContent = Math.round(score);
+}
+
+function multiple2(){
+    valeur += 1
+    setTimeout(valueVanilla, 10000);
+}
+function valueVanilla(){
+    valeur -= 1;
+}
 
 window.setInterval(increaseScore, 5000);
-element.addEventListener("click",increaseScore);
+/*element.addEventListener("click",increaseScore);*/
+/*bonus1.addEventListener("click", multiple);*/
+bonus2.addEventListener("click", multiple2);
