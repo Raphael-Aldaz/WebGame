@@ -2,11 +2,13 @@ const element = document.querySelector(".image__toClick");
 const result = document.querySelector('.resultValue');
 
 let score =0 ;
-
+let timer = null;
+let interval;
 let valeur =1;
+let a = false;
 
 const rules = [
-    {id :1 ,price : 150, rule:"Click X2"},
+    {id :1 ,price : 100, rule:"Click X2"},
     {id : 2,price:200, rule:"+242"},
     {id : 3,price: 300, rule:"+2 cliks/5s" },
     {id : 4,price: 400, rule:"Click +10 pendant 10sec"},
@@ -104,26 +106,6 @@ function bonusMaster(value){
         changePicture();
     }
 }
-const malus = () => {
-    if(score < 0){
-        alert("tu as perdu ! reset la page")
-    } else if( score < 100 && score > 0) {
-        score -= 1
-        result.textContent = score
-    }else if( score < 200 && score > 100) {
-        score -= 20
-        result.textContent = score
-    }else if( score < 300 && score > 200) {
-        score -= 50
-        result.textContent = score
-    }else if( score < 400 && score > 300) {
-        score -= 70
-        result.textContent = score
-    }else if( score < 500 && score > 400) {
-        score -= 100
-        result.textContent = score
-    }     
-}
 const incrementTimer = (value) =>{
     if (score > value){
         valeur += 10;
@@ -131,16 +113,41 @@ const incrementTimer = (value) =>{
             valeur =1;
         }, 10000)
     }
-    
-    
+}
+const malus = () => {
+    if( score > 0) {
+        score -= 2
+        result.textContent = score
+    }
+    if( score > 100) {
+        score -= 10
+        result.textContent = score
+    }
+    if(score > 200) {
+        score -= 50
+        result.textContent = score
+    }
+    if(score > 300) {
+        score -= 70
+        result.textContent = score
+    }if( score > 400) {
+        score -= 100
+        result.textContent = score
+    }
+    if( score <= 0){
+        element.src="./assets/gameOver.png";
+        element.removeEventListener("click", increaseScore)
+    }
 }
 function setScore(newScore){
     score = newScore;
     myFunction();
 }
 function myFunction(){
-    setInterval(malus, 2000)
+    interval =  setInterval(malus, 700)
+}
+const start = () => {
+    setScore(score)
 }
 
-setScore(score)
 element.addEventListener("click",increaseScore);

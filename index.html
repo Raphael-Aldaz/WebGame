@@ -8,12 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Jeux du click </h1>
+    <h1>Click Soul </h1>
     <div class="container">
         <div class="main__section">
             <div class="result">
                 <p>Score : <h2 class="resultValue"></h2></p>
             </div>
+            <button onclick="start()">Start</button>
             <button onclick="window.location.reload()">Reset</button>
             <div class="main__Object">
                 <img class="image__toClick"  src="./assets/Capture.JPG" />
@@ -21,7 +22,7 @@
         </div>
         <div class="bonus__section">
             <h2>BONUS</h2>
-            <div class="card bonus_one" id="150" onclick="enable(this.id)"></div>
+            <div class="card bonus_one" id="100" onclick="enable(this.id)"></div>
             <div class="card bonus_two"id="200" onclick="enable(this.id)"></div>
             <div class="card bonus_third" id="300" onclick="autoClick(this.id)" ></div>
             <div class="card bonus_joker"id="400" onclick="incrementTimer(this.id)"></div>
