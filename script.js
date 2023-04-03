@@ -15,21 +15,15 @@ const rules = [
     {id : 5,price: 1000, rule:"+5 clicks/3s"},
 ]
 rules.map((bonusItem) => {
-    
     const bonus = document.createElement("p");
-    const price = document.createElement("h1");
-
+    const price = document.createElement("h2");
     const card = document.getElementById(bonusItem.price);
-
     const bonusContent =document.createTextNode(bonusItem.rule);
     const priceContent = document.createTextNode("Cout : " +bonusItem.price+" clicks");
-
     bonus.appendChild(bonusContent);
     price.appendChild(priceContent);
-
     card.appendChild(price)
     card.appendChild(bonus);
-    
 })
 function getClassName(value){
     const a = document.getElementById(value).className;
@@ -58,7 +52,8 @@ function multiple(){
     result.textContent = Math.round(score);
 }
 function changePicture(){
-    if(score < 100){
+
+    if(score > 1 && score < 100){
         element.src="./assets/Capture.JPG"
     }
     if(score > 100){
@@ -116,23 +111,23 @@ const incrementTimer = (value) =>{
 }
 const malus = () => {
     if( score > 0) {
-        score -= 2
-        result.textContent = score
+        score -= 1.5
+        result.textContent = Math.round(score);
     }
     if( score > 100) {
-        score -= 10
-        result.textContent = score
+        score -= 8
+        result.textContent = Math.round(score);
     }
     if(score > 200) {
         score -= 50
-        result.textContent = score
+        result.textContent = Math.round(score);
     }
     if(score > 300) {
         score -= 70
-        result.textContent = score
+        result.textContent = Math.round(score);
     }if( score > 400) {
         score -= 100
-        result.textContent = score
+        result.textContent = Math.round(score);
     }
     if( score <= 0){
         element.src="./assets/gameOver.png";
@@ -144,10 +139,9 @@ function setScore(newScore){
     myFunction();
 }
 function myFunction(){
-    interval =  setInterval(malus, 700)
+    interval =  setInterval(malus, 800)
 }
 const start = () => {
     setScore(score)
+    element.addEventListener("click",increaseScore);
 }
-
-element.addEventListener("click",increaseScore);
